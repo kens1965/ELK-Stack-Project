@@ -8,7 +8,7 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the .yml file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._
+https://github.com/kens1965/ELK-Stack-Project/blob/main/ansible-Playbooks/Install-Elk.yml
 
 This document contains the following details:
 - Description of the Topology
@@ -27,11 +27,10 @@ Load balancing ensures that the application will be highly available, in additio
 
 The jump box is an important part of this network, as it serves as a gateway router. All traffic is sent through this single node and access to other machines can be controlled by allowing connections to specific IP addresses. Using the jump box makes it much easier to secure and monitor each virtual machine behind the gateway.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and system traffic.
 Filebeat collects data about the file system and enables analysts to monitor files for suspicious changes. Metricbeat collects machine metrics, such as uptime and CPU usage.
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name      | Function | IP Address | Operating System |
 |---------- |----------|------------|------------------|
@@ -45,19 +44,20 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the jump box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- 98.240.161.193 (Personal IP)
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by SSH. The only machine that is able to connect to the ELK Server is the jump box, IP address 10.0.0.4
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Name     | Publicly Accessible | Allowed IP Addresses     |
+|----------|---------------------|----------------------    |
+| Jump Box |     No              | Personal IP Only         |
+| Web_1    |     No              | 10.0.0.4                 |
+| Web_2    |     No              | 10.0.0.4                 |
+| Web_3    |     No              | 10.0.0.4                 |
+| Elk-One  |     No              | 10.0.0.4 and Personal IP |
 
 ### Elk Configuration
 
