@@ -115,11 +115,11 @@ SSH into the control node and follow the steps below:
 
 The commands needed to run Ansible for the ELK Server are:
 
--- ssh (user name)@(Jump Box Public IP)
--- sudo docker container list -a (locate the Ansible container)
--- sudo docker start (name of the container)
--- sudo docker attach (name of the container)
--- cd /etc/ansible
--- ansible-playbook install-elk.yml (configures the Elk Server and starts the container on the server)
--- cd /etc/ansible/roles
--- ansible-playbook filebeat.yml (installs Filebeat)
+- ssh (user name)@(Jump Box Public IP)
+- sudo docker container list -a (locate the Ansible container)
+- sudo docker start (name of the container)
+- sudo docker attach (name of the container)
+- cd /etc/ansible
+- ansible-playbook install-elk.yml (configures the Elk Server and starts the container on the server)
+- cd /etc/ansible/roles
+- ansible-playbook filebeat.yml (installs Filebeat)
