@@ -26,7 +26,8 @@ Load balancing ensures that the application will be highly available, in additio
 
 The jump box is an important part of this network, as it serves as a gateway router. All traffic is sent through this single node and access to other machines can be controlled by allowing connections to specific IP addresses. Using the jump box makes it much easier to secure and monitor each virtual machine behind the gateway.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and system traffic.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and system traffic. The ELK stack can easily collect logs from multiple machines into a single database. It can also build graphs, charts, and other visualizations from network data.
+
 Filebeat collects data about the file system and enables analysts to monitor files for suspicious changes. Metricbeat collects machine metrics, such as uptime and CPU usage.
 
 The configuration details of each machine may be found below.
@@ -62,7 +63,7 @@ A summary of the access policies in place can be found in the table below.
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it is extremely easy to use. Through the use of Playbooks, multiple machines can be configured with a single command once the Playbook is created.
 
-The playbook implements the following tasks:
+The ansible-playbook install-elk.yml implements the following tasks:
 -- Installs docker.io, the engine that is used to run the containers.
 -- Installs Python3-pip, the package that is used to install Python software.
 -- Downloads the docker container and configures it to start on ports 5601, 9200 and 5044.
@@ -90,13 +91,24 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 
 - Copy the filebeat.yml file to the /etc/ansible/roles directory.
-- Update the configuration file to inclue the private IP address of the Elk Server to the Elasticsearch and Kibana
+- Update the configuration file to include the private IP address of the Elk Server to the Elasticsearch and Kibana
   sections of the configuration file.
 - Run the playbook, and SSH to the Elk Server to check that the installation worked as expected by running docker ps.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+**Q&A**
+- Which file is the playbook? Where do you copy it? The playbook is a file that ends in .yml. It
+- Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+- Which URL do you navigate to in order to check that the ELK server is running? http://52.252.228.221:5601/app.kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
+The commands needed to run Ansible for the ELK Server are:
+
+-- ssh azureken@104.42.30.126 (Jump Box Private IP)
+-- sudo docker container list -a (locate the Ansible container)
+-- sudo docker start affectionate_herschel (or the name of the container)
+-- sudo docker attach affectionate_herschel (or the name of the container)
+-- cd /etc/ansible
+-- ansible-playbool install-elk.yml (configures the Elk Server and starts the container on the server)
+-- cd /etc/ansible/roles
+-- ansible-playbook filebeat.yml (installs Filebeat)
