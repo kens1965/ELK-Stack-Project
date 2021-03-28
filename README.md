@@ -17,7 +17,6 @@ This document contains the following details:
   - Machines Being Monitored
 - How to Use the Ansible Build
 
-
 **Description of the Topology**
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
@@ -96,15 +95,16 @@ SSH into the control node and follow the steps below:
 - Run the playbook, and SSH to the Elk Server to check that the installation worked as expected by running docker ps.
 
 **Q&A**
-- Which file is the playbook? Where do you copy it? The playbook is a file that ends in .yml. It
-- Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- Which URL do you navigate to in order to check that the ELK server is running? http://52.252.228.221:5601/app.kibana
+- _Which file is the playbook? Where do you copy it?_ The playbook is a file that ends in .yml. It can be copied from /etc/ansible when in
+   the ansible container.
+- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_ The machine on which to install the ELK server can be specified in _host_ file, located in the Ansible directory. The machine to install Filebeat can be specified in filebeat-config.yml playbook, located in the ansible directory.
+- _Which URL do you navigate to in order to check that the ELK server is running? http://52.252.228.221:5601/app/kibana
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+**How to Use the Ansible Build**
 
 The commands needed to run Ansible for the ELK Server are:
 
--- ssh azureken@104.42.30.126 (Jump Box Private IP)
+-- ssh azureken@104.42.30.126 (or Jump Box Private IP)
 -- sudo docker container list -a (locate the Ansible container)
 -- sudo docker start affectionate_herschel (or the name of the container)
 -- sudo docker attach affectionate_herschel (or the name of the container)
