@@ -98,7 +98,7 @@ SSH into the control node and follow the steps below:
 - _Which file is the playbook? Where do you copy it?_ The playbook is a file that ends in .yml. It can be copied from /etc/ansible when in
    the ansible container.
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_ The machine on which to install the ELK server can be specified in _host_ file, located in the Ansible directory. The machine to install Filebeat can be specified in filebeat-config.yml playbook, located in the ansible directory.
-- _Which URL do you navigate to in order to check that the ELK server is running? http://52.252.228.221:5601/app/kibana
+- _Which URL do you navigate to in order to check that the ELK server is running?_ http://52.252.228.221:5601/app/kibana
 
 **How to Use the Ansible Build**
 
