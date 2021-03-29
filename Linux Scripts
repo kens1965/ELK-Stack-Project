@@ -1,1 +1,63 @@
+Synopsis: conduct research to determine if there is a player working with a dealer to steal money at roulette tables.
+
+Step One: Investigation Preparation
+
+Created directory titled “Lucky_Duck_Investigations”
+Within Lucky Duck directory, created directory entitled “Roulette_Loss_Investigation”
+Within Roulette Loss directory, created subdirectories entitled “Player_Analysis”, “Dealer_Analysis”, and “Player_Dealer_Correlation”
+Created a notes file for each subdirectory.
+
+Step Two: Gathering Evidence
+
+Downloaded directories containing files for dealer schedules and player win-loss for the week of March 10.
+
+Used the move command to move the March 10, 12, and 15 Player files to the Player_Analysis directory.
+
+Step Three: Correlating the Evidence
+
+Player Analysis
+
+Created a list of losses from players log of March 10 and moved it to the Roulette_Losses directory using the following command:
+
+            grep - 03_10_win_loss_player_data > Roulette_Losses
+
+            Appended losses from logs of March 12 and 15 to the Roulette_Losses directory with
+            the following command: 
+
+            grep - 03_12_win_loss_player_data >> Roulette_Losses
+            grep - 03_15_win_loss_player_data >> Roulette_Losses
+
+In the Roulette_Losses directory with a list of all losses from March 10, 12, and 15, I analyzed the data and discovered one person was playing each of the times when losses occurred: Mylie Schmidt. Below is a screen shot of the command used to show that Mylie Schmidt’s name appeared 13 times during the week of March 10, referred to as Exhibit A.
+
+
+
+
+
+
+
+Dealer Analysis
+
+I noted the dates and times of the losses associated with Mylie Schmidt, then conducted a search to find out what dealers were working at the roulette table during those times. I created 13 scripts, one for each date and time, and separated the roulette dealers from the blackjack and Texas Hold Em dealers.
+
+Below is a copy of one of the scripts. The time and date was modified on each script. Each script was run and results from all scripts were loaded onto one one file entitled Dealers_Working_During_Losses.
+
+
+
+
+
+The contents of that file is shown in the screenshot below. It shows that Billy Jones was the only dealer at the time the losses occurred at the Roulette table.
+
+
+
+
+Summary
+
+Based on the evidence that Mylie Schmidt played at the Roulette table during each of the losses during the week of March 10, and that the same Roulette dealer was involved when she played, the conclusion is that Ms. Schmidt and Billy Jones colluded to scam Lucky Duck.
+
+Step Four: Scripting Your Tasks
+
+I created arguments in the script that can easily identify the roulette dealer at the specific date and time. For example, running the script sh roulette_dealer_finder_by_time.sh 03:00:00 PM 0310 will retrieve the name of the dealer at that time and date, which is Evayln Howell. Below is the script created for this task.
+
+
+
 
